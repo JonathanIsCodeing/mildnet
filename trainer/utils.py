@@ -79,9 +79,9 @@ def write_file_and_backup(content, job_dir, filepath):
 
 def print_trainable_counts(model):
     trainable_count = int(
-        np.sum([K.count_params(p) for p in list(model.trainable_weights)]))
+        np.sum([K.count_params(p) for p in model.trainable_weights if np.all(p==0)==False ]))
     non_trainable_count = int(
-        np.sum([K.count_params(p) for p in list(model.non_trainable_weights)]))
+        np.sum([K.count_params(p) for p in model.trainable_weights if np.all(p==0)==False ]))
 
     logging.info('Total params: {:,}'.format(trainable_count + non_trainable_count))
     logging.info('Trainable params: {:,}'.format(trainable_count))
