@@ -5,8 +5,8 @@ needs_reproducible = True
 if needs_reproducible:
   from numpy.random import seed
   seed(1)
-  from tensorflow import set_random_seed
-  set_random_seed(2)
+  from tensorflow import random
+  random.set_seed(2)
 
 from .checkpointers import *
 from .accuracy import *
@@ -16,7 +16,7 @@ import inspect
 import argparse
 import pandas as pd
 import dill
-from hyperdash import Experiment
+# from hyperdash import Experiment // not used
 from tensorflow.keras.callbacks import TensorBoard
 import logging
 
